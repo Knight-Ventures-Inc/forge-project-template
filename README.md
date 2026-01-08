@@ -1,78 +1,143 @@
-> **FORGE-SD Project Template**
->
-> This repository is cloned or forked to create new FORGE-governed projects.
-> It is NOT the FORGE methodology, canon, or documentation source of truth.
+# FORGE-SD Project Template
+
+**A drop-in template for FORGE-governed software development projects.**
+
+> This repository is cloned to start new FORGE projects.
+> It is NOT the FORGE methodology canon — it *consumes* FORGE by reference.
 >
 > For FORGE methodology: [theforgemethod.org](https://theforgemethod.org)
+> For FORGE canon: [FORGE-Method repository](https://github.com/Knight-Ventures-Inc/FORGE-Method)
 
 ---
 
-> **PROJECT SHELL** — Structure only. Awaiting Frame approval and constitutional documents before Execute is authorized.
+> **PROJECT SHELL** — Structure only. Awaiting constitutional documents before Execute is authorized.
 
 ---
 
-# [Project Name]
+## What You Get
 
-[One-line description from Kickoff Brief]
+When you clone this template:
 
-## Overview
+- **CLAUDE.md** — Pre-wired for FORGE execution
+- **Cursor rules** — SD (Implementation) and CC (Quality Gate) roles configured
+- **Folder structure** — Matches FORGE rhythm exactly
+- **Placeholders** — Constitutional docs ready for your inputs
 
-[2-3 sentences from Intent Summary]
+**CC can scaffold immediately once you provide the constitution.**
 
-## Status
-
-**Phase:** [Frame | Orchestrate | Refine | Govern | Execute]
+---
 
 ## Quick Start
 
-[Placeholder until Execute begins]
+### 1. Clone the template
 
 ```bash
-# Clone and setup
-git clone [repo-url] [project-name]
-cd [project-name]
-pnpm install
-
-# Development
-pnpm dev
+git clone https://github.com/Knight-Ventures-Inc/forge-sd-template.git [your-project]
+cd [your-project]
+rm -rf .git
+git init
 ```
 
-## Documentation
+### 2. Customize CLAUDE.md
 
-- [Constitutional Documents](docs/constitution/)
-- [Build Plan](docs/build-plan.md)
-- [Operational State](docs/ops/state.md)
+Replace `[CUSTOMIZE]` markers with your project values.
+
+### 3. Provide constitutional documents
+
+Populate these files in `docs/constitution/`:
+
+| Document | Purpose |
+|----------|---------|
+| `PRODUCT.md` | Product intent, user value, success criteria |
+| `TECH.md` | Technical architecture, stack decisions |
+| `GOVERNANCE.md` | Security, permissions, policies |
+
+### 4. Remove the PROJECT SHELL banner
+
+Once constitution exists and Execute is authorized, remove the banner from this README.
+
+### 5. Begin execution
+
+CC can now scaffold and begin The FORGE Cycle.
+
+---
 
 ## Project Structure
 
 ```
-[project-codename]/
-├── .cursor/rules/        # Cursor IDE configuration
-├── .github/              # GitHub templates and workflows
-├── ai_prompts/           # Task briefs and handoffs
-│   ├── active/           # Current task brief only
-│   ├── completed/        # Archived by PR number
-│   └── templates/        # Reusable templates
+[project]/
+├── CLAUDE.md                 # Project identity (pre-wired for FORGE)
+├── .cursor/rules/
+│   ├── forge-sd.mdc          # Implementation Engine rules
+│   └── forge-cc.mdc          # Quality Gate rules
 ├── docs/
-│   ├── constitution/     # Authoritative specs (READ-ONLY during Execute)
-│   ├── adr/              # Architecture Decision Records
-│   └── ops/              # Operational state
-├── reports/              # Status reports and audits
-├── src/                  # Application source
-└── tests/                # Test files
+│   ├── constitution/         # REQUIRED inputs (read-only during Execute)
+│   │   ├── PRODUCT.md
+│   │   ├── TECH.md
+│   │   └── GOVERNANCE.md
+│   ├── adr/                  # Architecture Decision Records
+│   ├── ops/                  # Operational state
+│   └── build-plan.md         # Execution state
+├── ai_prompts/
+│   ├── active/               # Current task brief
+│   ├── completed/            # Archived briefs
+│   └── templates/            # Reusable templates
+├── src/                      # Application source
+└── tests/                    # Test files
 ```
 
-## Instantiation Instructions
+---
 
-When using this template to create a new project:
+## What This Template Expects
 
-1. Clone or fork this repository
-2. Replace `[Project Name]` and `[project-codename]` placeholders
-3. Fill `CLAUDE.md` with project-specific values from Kickoff Brief
-4. Place constitutional documents in `docs/constitution/`
-5. Remove the PROJECT SHELL banner once Execute is authorized
-6. Delete or update `.forge-template` marker file
+### Inputs (you provide)
+
+1. **Constitutional documents** — PRODUCT.md, TECH.md, GOVERNANCE.md
+2. **Project identity** — Fill CLAUDE.md [CUSTOMIZE] sections
+3. **Human Lead greenlight** — Authorize Execute phase
+
+### Already configured
+
+- Cursor rules for SD and CC roles
+- File-based handoff structure
+- Build plan template
+- Task brief templates
+
+---
+
+## Agent Roles
+
+| Role | Agent | What They Do |
+|------|-------|--------------|
+| Human Lead | You | Greenlight, merge, decide |
+| Strategist | Jordan (ChatGPT) | Business strategy |
+| Spec Author | CP (Claude Project) | Constitutional docs |
+| Quality Gate | CC (Claude Code) | Verification, PRs |
+| Implementation | Cursor | Code per briefs |
+
+---
+
+## Key Commands
+
+```bash
+# Verification Sequence (Sacred Four)
+pnpm typecheck && pnpm lint && pnpm test:run && pnpm build
+
+# Development
+pnpm dev
+pnpm build
+```
+
+---
+
+## Links
+
+- [FORGE Method](https://theforgemethod.org) — The methodology
+- [FORGE Canon](https://github.com/Knight-Ventures-Inc/FORGE-Method) — Authoritative docs
+- [Constitutional Docs](docs/constitution/) — Project specs
 
 ---
 
 *This project follows The FORGE Method(TM) — theforgemethod.org*
+
+**Knight Ventures, Inc.**
