@@ -1,4 +1,4 @@
-# FORGE-SD Project Template
+# FORGE Project Template
 
 **A FORGE-governed software development project.**
 

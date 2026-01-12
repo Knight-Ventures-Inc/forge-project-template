@@ -1,10 +1,29 @@
-# FORGE-SD Project Template
+# FORGE Project Template
 
 **A drop-in template for FORGE-governed software development projects.**
 
-> This repository is cloned to start new FORGE projects.
-> It is NOT the FORGE methodology canon — it *consumes* FORGE by reference.
->
+---
+
+## Start Here If...
+
+| You want to... | Go to... |
+|----------------|----------|
+| **Learn the FORGE methodology** | [FORGE-Method](https://github.com/Knight-Ventures-Inc/FORGE-Method) (the canon) |
+| **Start a new FORGE project** | Clone **this repo** |
+| **Spawn projects via Jordan/ChatGPT** | [forge-genesis-vault](https://github.com/Knight-Ventures-Inc/forge-genesis-vault) |
+
+---
+
+## What This Is (and Isn't)
+
+**This IS:**
+- The template you clone to start a new FORGE-governed project
+- A pre-wired structure that *consumes* the FORGE methodology
+
+**This is NOT:**
+- The FORGE methodology itself (that's [FORGE-Method](https://github.com/Knight-Ventures-Inc/FORGE-Method))
+- A place to redefine or extend FORGE concepts
+
 > For FORGE methodology: [theforgemethod.org](https://theforgemethod.org)
 > For FORGE canon: [FORGE-Method repository](https://github.com/Knight-Ventures-Inc/FORGE-Method)
 
@@ -32,7 +51,7 @@ When you clone this template:
 ### 1. Clone the template
 
 ```bash
-git clone https://github.com/Knight-Ventures-Inc/forge-sd-template.git [your-project]
+git clone https://github.com/Knight-Ventures-Inc/forge-project-template.git [your-project]
 cd [your-project]
 rm -rf .git
 git init
@@ -75,6 +94,7 @@ CC can now scaffold and begin The FORGE Cycle.
 │   │   ├── PRODUCT.md
 │   │   ├── TECH.md
 │   │   └── GOVERNANCE.md
+│   ├── parking-lot/          # Issues/ideas discovered but out of scope
 │   ├── adr/                  # Architecture Decision Records
 │   ├── ops/                  # Operational state
 │   └── build-plan.md         # Execution state
