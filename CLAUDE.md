@@ -116,6 +116,22 @@ pnpm db:migrate   # Apply migrations
 
 ---
 
+## DATE SAFETY RULE
+
+All dates used in:
+- `CHANGELOG.md`
+- `plans/`
+- `reports/`
+- `docs/decisions/`
+
+**MUST** be based on the current local system date at runtime.
+
+If the agent cannot verify the current date, it must halt and request confirmation before writing dated artifacts.
+
+**Heuristic or assumed dates are prohibited.**
+
+---
+
 ## Non-Negotiables
 
 1. **Constitution before Execute** — No constitutional docs = no scaffolding
