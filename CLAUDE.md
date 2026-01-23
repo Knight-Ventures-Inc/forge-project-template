@@ -18,6 +18,28 @@ This project operates under **The FORGE Method(TM)**.
 
 ---
 
+## Template Usage Notice
+
+> **This file is part of `forge-project-template/` — the operational scaffold for new FORGE projects.**
+
+### If You Are Reading This IN the Template Repo
+
+**This is an ARTIFACT, not a workspace.**
+
+| Do | Don't |
+|----|-------|
+| Copy this repo to create new projects | Work directly in this repo |
+| Reference patterns here | Add project-specific code here |
+| Customize after copying | Store recon, research, or proposals here |
+
+**Template changes only arrive via promotion from `../_workspace/` after explicit approval.**
+
+### If You Copied This to Create a New Project
+
+You're in the right place. Customize the `[CUSTOMIZE]` sections below and proceed.
+
+---
+
 ## Project Identity
 
 ### What This Is
