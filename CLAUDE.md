@@ -105,6 +105,37 @@ Proceed with scaffolding and execution per the constitution.
 
 ---
 
+## Platform vs Tenant Planes
+
+This project operates on two planes:
+
+### Platform Plane
+- **Scope:** System-wide (the SaaS platform itself)
+- **Actors:** Stakeholders
+- **Surfaces:** Stakeholder Portal, Stakeholder AI
+- **Access:** Invite-only platform memberships
+
+### Tenant Plane
+- **Scope:** Per-organization (firms, customers, ventures)
+- **Actors:** Owners, Admins, Members
+- **Surfaces:** Tenant application
+- **Access:** Organization memberships
+
+### Session Invariant
+**A session is scoped to exactly one plane.** No cross-visibility between planes.
+
+- Stakeholder session → Stakeholder Portal only
+- Tenant session → Tenant app for that org only
+
+### Dual-Plane Humans
+If a human operates in both planes, they use **separate identities**:
+- Stakeholder identity (separate email)
+- Tenant identity (separate email)
+
+Switching planes requires logout/login.
+
+---
+
 ## Current State
 
 ### Phase
@@ -192,6 +223,11 @@ If the agent cannot verify the current date, it must halt and request confirmati
 | Templates | `ai_prompts/templates/` |
 | ADRs | `docs/adr/` |
 | Parking Lot | `docs/parking-lot/` |
+| Discovery | `docs/discovery/` |
+| Auth Utilities | `src/lib/auth/` |
+| Stakeholder Portal (Platform Plane) | `src/app/portal/` |
+| Stakeholder AI | `supabase/functions/stakeholder-ai/` |
+| Auth Migrations | `supabase/migrations/` |
 
 ---
 
@@ -252,6 +288,74 @@ One-paragraph description of the issue or idea.
 | Auth | [CUSTOMIZE: e.g., Supabase Auth] |
 | Hosting | [CUSTOMIZE: e.g., Vercel] |
 | Styling | [CUSTOMIZE: e.g., Tailwind + shadcn/ui] |
+
+---
+
+## FORGE Extensions
+
+This project includes scaffolding for required FORGE extensions.
+
+### Discovery Pack (Required for All Projects)
+
+Location: `docs/discovery/`
+
+Every FORGE project begins with discovery. The Discovery Pack provides structured intake-to-spec workflow.
+
+| Stage | Folder | Purpose |
+|-------|--------|---------|
+| Intake | `docs/discovery/intake/` | Raw inputs (transcripts, notes, screenshots) |
+| Structure | `docs/discovery/themes/` | Organized themes |
+| Handoff | `docs/discovery/handoff/` | Final spec pack |
+
+**See:** `docs/discovery/README.md`
+
+### Auth/RBAC (Required for Software Projects)
+
+Location: `supabase/migrations/`, `src/lib/auth/`
+
+FORGE uses an org-centric identity model for tenant-level roles and a separate platform-level membership system.
+
+#### Tenant Roles (within organizations)
+
+| Role | Description |
+|------|-------------|
+| Owner | Ultimate authority over the organization |
+| Admin | User management, settings |
+| Member | Standard team access |
+
+#### Platform Memberships (supra-tenant)
+
+| Role | Description |
+|------|-------------|
+| Stakeholder | Stakeholder Portal access, feedback, visibility into product execution |
+
+**Note:** Stakeholder is a platform-level actor, not a tenant role. Stakeholders operate in the platform plane (Stakeholder Portal) and have no implicit access to tenant data. See [Auth/RBAC extension](https://github.com/Knight-Ventures-Inc/FORGE-Method/blob/main/docs/extensions/auth-rbac.md).
+
+**Key files:**
+- `supabase/migrations/00001_auth_foundation.sql` — Schema and RLS
+- `src/lib/auth/types.ts` — TypeScript types
+- `src/lib/auth/client.ts` — Client utilities
+
+### Stakeholder Interface (Required for Software Projects)
+
+Location: `src/app/portal/`, `supabase/functions/stakeholder-ai/`
+
+Supra-tenant visibility and feedback system for stakeholders. The Stakeholder Portal operates in the platform plane and provides visibility into product execution (roadmap, milestones, status) without access to tenant data.
+
+**Portal:** `src/app/portal/`
+- Feedback submission and voting
+- Project visibility (platform-level, not tenant data)
+
+**Stakeholder AI:** `supabase/functions/stakeholder-ai/`
+- Explains project status and roadmap
+- Answers questions about the product (from platform context only)
+- Captures feedback
+- Does NOT access tenant data
+- Does NOT execute tasks (execution is FAI, maturity-gated)
+
+**Key files:**
+- `supabase/migrations/00002_stakeholder_portal.sql` — Portal schema
+- `supabase/functions/stakeholder-ai/index.ts` — AI edge function
 
 ---
 

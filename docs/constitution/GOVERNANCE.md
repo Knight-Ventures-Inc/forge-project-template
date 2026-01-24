@@ -27,6 +27,11 @@ When populated, this document should include:
 - Permission model
 - Access control rules
 
+### 2a. Platform vs Tenant Authorization
+- Platform memberships (stakeholder access)
+- Session plane isolation
+- Dual-plane human identity handling (if applicable)
+
 ### 3. Row Level Security (RLS)
 - Table-level policies
 - User isolation rules
