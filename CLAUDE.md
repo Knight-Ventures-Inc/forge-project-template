@@ -89,7 +89,7 @@ Proceed with scaffolding and execution per the constitution.
 | Role | Agent | Authority | Boundary |
 |------|-------|-----------|----------|
 | **Human Lead** | [CUSTOMIZE] | Final decisions, greenlight, merge | Reviews, approves, resolves |
-| **Strategist** | Jordan (ChatGPT) | Business strategy, feature framing | Does NOT implement |
+| **Strategist** | Product Strategist | Frame phase, product intent | Does NOT implement or plan architecture |
 | **Architect** | project-architect (local) | Constitutional docs, planning | Does NOT implement code |
 | **Quality Gate** | CC (Claude Code) | Verification, PRs, build-plan | Does NOT make arch decisions |
 | **Implementation** | Cursor | Code per task briefs | Does NOT create PRs |
@@ -102,6 +102,50 @@ Proceed with scaffolding and execution per the constitution.
 - **Quality Gate and Implementation** cycle tightly
 - **Implementation Engine never communicates** with Strategist or Architect
 - **Codex Cloud** produces recon reports and handoff packets only (never modifies code)
+
+---
+
+## Inbox-Driven Workflow (Frame Phase)
+
+The Product Strategist uses an inbox-driven workflow for Frame phase work.
+
+### Structure
+
+```
+inbox/
+├── 00_drop/              ← Discovery input (human writes here)
+│   └── <feature-slug>/   ← One folder per feature
+└── 10_product-intent/    ← Product Intent Packets (agent writes here)
+    └── <feature-slug>/   ← Output packet
+```
+
+### Workflow
+
+1. **Human drops discovery materials** in `inbox/00_drop/<slug>/`
+   - README.md (required) — describe the idea
+   - threads/ — transcripts, notes, brain dumps
+   - assets/ — sketches, screenshots
+   - links.md — external references
+
+2. **Product Strategist processes** the discovery materials
+   - Asks clarifying questions (up to 3 rounds)
+   - Synthesizes into coherent product intent
+   - Produces Product Intent Packet
+
+3. **Output appears** in `inbox/10_product-intent/<slug>/`
+   - 8 required artifacts (intent, actors, use-cases, etc.)
+   - Professional PM-level quality
+
+4. **Human Lead routes** to next phase (Project Architect)
+
+### Relationship to Constitution
+
+- **Product Intent Packets** are Frame-phase discovery artifacts
+- **PRODUCT.md** (in `docs/constitution/`) is the refined constitutional doc
+- Packets **precede and inform** PRODUCT.md but don't replace it
+- Packets are preserved as historical discovery record
+
+See `inbox/README.md` for detailed submission guidelines.
 
 ---
 
@@ -218,12 +262,15 @@ If the agent cannot verify the current date, it must halt and request confirmati
 | Constitution | `docs/constitution/` |
 | Build Plan | `docs/build-plan.md` |
 | Ops State | `docs/ops/state.md` |
+| Inbox (Frame phase) | `inbox/` |
+| Discovery Input | `inbox/00_drop/` |
+| Product Intent Packets | `inbox/10_product-intent/` |
 | Current Brief | `ai_prompts/active/` |
 | Completed Briefs | `ai_prompts/completed/` |
 | Templates | `ai_prompts/templates/` |
 | ADRs | `docs/adr/` |
 | Parking Lot | `docs/parking-lot/` |
-| Discovery | `docs/discovery/` |
+| Discovery (legacy) | `docs/discovery/` |
 | Auth Utilities | `src/lib/auth/` |
 | Stakeholder Portal (Platform Plane) | `src/app/portal/` |
 | Stakeholder AI | `supabase/functions/stakeholder-ai/` |
