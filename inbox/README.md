@@ -44,11 +44,11 @@ inbox/10_product-intent/my-feature/
 
 ### 4. Human Routes to Orchestrate
 
-Human Lead reviews packet and routes to Project Architect v2.
+Human Lead reviews packet and routes to Project Architect.
 
 ### 5. Project Architect Processes
 
-The Project Architect v2 agent:
+The Project Architect agent:
 1. Reads the Product Intent Packet
 2. Asks clarifying questions (up to 2 rounds)
 3. Decomposes into architecture components

@@ -1,14 +1,14 @@
 # Architecture Plan Inbox
 
 **Phase:** Orchestrate (O)
-**Producer:** Project Architect v2
+**Producer:** Project Architect
 **Consumer:** Human Lead → Ops Conductor / Execute agents
 
 ---
 
 ## Purpose
 
-This directory contains Architecture & Execution Packets produced by the Project Architect v2 agent.
+This directory contains Architecture & Execution Packets produced by the Project Architect agent.
 
 Each packet is a complete plan for implementing a product, ready for human routing to execution.
 
@@ -32,7 +32,7 @@ Each packet is a complete plan for implementing a product, ready for human routi
 
 ## Lifecycle
 
-1. **Created** when Project Architect v2 completes planning
+1. **Created** when Project Architect completes planning
 2. **Reviewed** by Human Lead
 3. **Routed** to Ops Conductor or Execute agents
 4. **Archived** after implementation complete

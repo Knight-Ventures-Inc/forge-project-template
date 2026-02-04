@@ -90,7 +90,7 @@ Proceed with scaffolding and execution per the constitution.
 |------|-------|-----------|----------|
 | **Human Lead** | [CUSTOMIZE] | Final decisions, greenlight, merge | Reviews, approves, resolves |
 | **Strategist** | Product Strategist | Frame phase, product intent | Does NOT implement or plan architecture |
-| **Architect** | Project Architect v2 | Architecture packets, planning | Does NOT implement code |
+| **Architect** | Project Architect | Architecture packets, planning | Does NOT implement code |
 | **Quality Gate** | CC (Claude Code) | Verification, PRs, build-plan | Does NOT make arch decisions |
 | **Implementation** | Cursor | Code per task briefs | Does NOT create PRs |
 | **Recon Agent** | Codex Cloud (optional) | Remote recon, handoff packets | Does NOT modify code |
@@ -136,9 +136,9 @@ inbox/
    - 8 required artifacts (intent, actors, use-cases, etc.)
    - Professional PM-level quality
 
-4. **Human Lead routes** to Project Architect v2
+4. **Human Lead routes** to Project Architect
 
-5. **Project Architect v2 processes** the Product Intent Packet
+5. **Project Architect processes** the Product Intent Packet
    - Asks clarifying questions (up to 2 rounds)
    - Decomposes into architecture components
    - Produces Architecture & Execution Packet
