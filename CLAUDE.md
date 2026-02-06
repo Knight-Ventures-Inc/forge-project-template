@@ -283,7 +283,7 @@ Proceed with scaffolding and execution per the constitution.
 | **Strategist** | Product Strategist | Frame (F) | Does NOT implement or plan architecture |
 | **Architect** | Project Architect | Orchestrate/Refine (O/R) | Does NOT implement code |
 | **Governor** | Ops Agent | Govern (G) | Does NOT design or code |
-| **Execution** | E agents/humans | Execute (E) | Implements per task briefs |
+| **Execution** | @E (E agents/humans) | Execute (E) | Implements per task briefs |
 
 **Note:** CC (Claude Code) is infrastructure/runtime, not a FORGE role. FORGE roles are **F/O/R/G/E**.
 
@@ -750,3 +750,78 @@ Set to ENABLED in `docs/constitution/FAI.md` when adopting.
 ---
 
 *This project follows The FORGE Method(TM) — theforgemethod.org*
+
+---
+
+## @E: Execution Coordination
+
+### Overview
+
+**@E** is the addressable execution role in FORGE. @E may be agents (Claude Code, Cursor) or humans, but always operates under governance routing (Human → @G → @E).
+
+**For complete @E operating guide, see:**
+- [FORGE-Method/agents/forge-e-operating-guide.md](https://github.com/Knight-Ventures-Inc/FORGE-Method/blob/main/agents/forge-e-operating-guide.md)
+
+### Sacred Four (Required Before Every PR)
+
+```bash
+pnpm sacred-four
+```
+
+This runs:
+1. `pnpm typecheck` — TypeScript strict mode validation
+2. `pnpm lint` — ESLint + Prettier
+3. `pnpm test:coverage` — Tests with 70% coverage minimum
+4. `pnpm build` — Production build verification
+
+**All four must pass.** No exceptions.
+
+### Testing Requirements
+
+- **Default coverage:** 70% (lines, functions, branches, statements)
+- **Sacred Four paths:** 100% coverage required for:
+  - Authentication flows
+  - Payment processing (Stripe)
+  - Data integrity operations
+  - Security-sensitive paths (RLS, authorization)
+
+**See:** [FORGE-Method/templates/forge-template-testing-requirements.md](https://github.com/Knight-Ventures-Inc/FORGE-Method/blob/main/templates/forge-template-testing-requirements.md)
+
+### Technology Stack Defaults
+
+This template uses FORGE SaaS standards:
+
+| Component | Default |
+|-----------|---------|
+| Framework | Next.js 15+ (App Router) |
+| Language | TypeScript 5+ (strict mode) |
+| Database | Supabase Postgres |
+| Auth | Supabase Auth |
+| Testing (Unit) | Vitest |
+| Testing (E2E) | Playwright |
+| Styling | Tailwind CSS v4 |
+| CI/CD | GitHub Actions |
+
+**See:** [FORGE-Method/templates/forge-template-saas-standards.md](https://github.com/Knight-Ventures-Inc/FORGE-Method/blob/main/templates/forge-template-saas-standards.md)
+
+### Handoff → Completion Protocol
+
+@E works from **handoff packets** created by @G (Ops Agent). Each handoff packet includes:
+- `handoff_id`: Unique identifier
+- `scope`: What to build
+- `acceptance_criteria`: Success definition
+- `constraints`: What NOT to do
+- `approval_status: approved`
+
+@E produces **completion packets** with:
+- YAML frontmatter (machine-readable metrics for @G validation)
+- Markdown narrative (human-readable context)
+- Branch + PR link
+- Sacred Four results
+- Test coverage metrics
+- File manifest (created/modified/deleted)
+
+**See:** [FORGE-Method/agents/forge-e-operating-guide.md](https://github.com/Knight-Ventures-Inc/FORGE-Method/blob/main/agents/forge-e-operating-guide.md#6-handoff--completion-protocol)
+
+---
+
